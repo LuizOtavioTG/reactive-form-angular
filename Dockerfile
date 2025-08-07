@@ -15,7 +15,7 @@ RUN ng build --configuration production
 
 FROM nginx:alpine
 
-COPY --from=build /app/dist/memoteca    /usr/share/nginx/html
+COPY --from=build /app/dist/forms-reativos    /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY mime.types /etc/nginx/mime.types
 
