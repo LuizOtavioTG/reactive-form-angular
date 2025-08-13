@@ -5,7 +5,14 @@
     <h3 class="principal__subtitulo">Dados pessoais</h3>
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="nome">Nome Completo</label>
-      <input name="nome" id="nome" class="campo__escrita" ngModel required minlength="2">
+      <input 
+      name="nome" 
+      id="nome" 
+      class="campo__escrita" 
+      ngModel 
+      required 
+      minlength="2"
+      #nome="ngModel">
       <div *ngIf="(form.controls['nome']?.invalid && form.controls['nome']?.touched) || form.controls['nome']?.dirty">
         <span class="erro__texto" *ngIf="form.controls['nome']?.errors?.
           ['required']">O campo de nome deve ser preenchido.</span>
@@ -20,7 +27,13 @@
       </div>
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="telefone">Contato</label>
-        <input name="telefone" id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" class="campo__escrita" ngModel/>
+        <input name="telefone" id="telefone" type="tel" placeholder="(XX) XXXXX-XXXX" class="campo__escrita" ngModel required pattern="(\(?\d{2}\)?\s?)(\d{5}\-?\d{4})"/>
+         <div *ngIf="(form.controls['telefone']?.invalid && form.controls['telefone']?.touched) || form.controls['telefone']?.dirty">
+          <span class="erro__texto" *ngIf="form.controls['telefone']?.errors?.
+          ['required']">O campo de telefone deve ser preenchido.</span>
+          <span class="erro__texto" *ngIf="form.controls['telefone']?.errors?.
+          ['pattern']">O campo de telefone está faltando algo.</span>
+        </div>
       </div>
     </div>
     <div class="formulario__campo">
