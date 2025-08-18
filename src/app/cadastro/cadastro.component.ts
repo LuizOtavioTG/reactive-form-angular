@@ -19,18 +19,18 @@ export class CadastroComponent implements OnInit {
   ngOnInit(): void {
   }
 
-   consultaCEP(ev: any, f: NgForm) {
+   consultaCEP(ev: any, form: NgForm) {
     const cep = ev.target.value;
     if (cep !== "") {
       this.cepService.getConsultaCep(cep).subscribe((resultado) => {
         console.log(resultado);
-        this.populandoEndereco(resultado, f);
+        this.populandoEndereco(resultado, form);
       });
     }
   }
 
-  populandoEndereco(dados: any, f: NgForm){
-    f.form.patchValue({
+  populandoEndereco(dados: any, form: NgForm){
+    form.form.patchValue({
       endereco: dados.logradouro,
       complemento: dados.complemento,
       bairro: dados.bairro,
